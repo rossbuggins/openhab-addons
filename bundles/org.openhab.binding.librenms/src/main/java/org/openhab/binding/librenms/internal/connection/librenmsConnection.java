@@ -9,7 +9,10 @@ import org.eclipse.jetty.client.api.ContentResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openhab.binding.librenms.internal.*;
+import org.openhab.binding.librenms.internal.config.librenmsConfiguration;
 import org.openhab.binding.librenms.internal.dto.LibrenmsDevice;
+import org.openhab.binding.librenms.internal.dto.LibrenmsDevices;
+import org.openhab.binding.librenms.internal.handler.librenmsHandler;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -72,6 +75,12 @@ public class librenmsConnection {
         return gson.fromJson(resp, LibrenmsDevice.class);
     }
 
+    private LibrenmsDevices getDevicesForGroup(String groupName)
+    {
+        var url = buildBaseUrl() + "/" + "Devices" + "/" + groupName; 
+        var resp = getResponse(url);
+        return gson.fromJson(resp, LibrenmsDevices.class);
+    }
 
     private String getResponse(String url) {
         try {
