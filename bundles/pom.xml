@@ -9,7 +9,7 @@
         
     <artifactId>org.openhab.addons.reactor</artifactId>
         
-    <version>4.0.0-SNAPSHOT</version>
+    <version>3.4.2</version>
       
   </parent>
     
