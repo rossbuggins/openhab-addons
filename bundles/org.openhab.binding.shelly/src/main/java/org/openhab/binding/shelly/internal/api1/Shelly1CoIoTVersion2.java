@@ -196,7 +196,7 @@ public class Shelly1CoIoTVersion2 extends Shelly1CoIoTProtocol implements Shelly
             case "3201": // sensor_1: T, extTemp, C, -55/125; unknown 999
             case "3301": // sensor_2: T, extTemp, C, -55/125; unknown 999
                 int idx = getExtTempId(sen.id);
-                if (idx >= 0) {
+                if (idx >= 0 && value < 999 ) {
                     // H&T, Fllod, DW only have 1 channel, 1/1PM with Addon have up to to 3 sensors
                     String channel = profile.isSensor ? CHANNEL_SENSOR_TEMP : CHANNEL_SENSOR_TEMP + idx;
                     // Some devices report values = -999 or 99 during fw update
